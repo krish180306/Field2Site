@@ -66,39 +66,39 @@ erDiagram
     HOST ||--o{ BOOKING : receives
     BOOKING ||--|| PAYMENT : triggers
     BOOKING ||--o{ REVIEW : receives
-    FARM_EQUIPMENT ||--o{ MAINTENANCE : "tracked"
-    CONSTRUCTION_EQUIPMENT ||--o{ MAINTENANCE : "tracked"
+    FARM_EQUIPMENT ||--o{ MAINTENANCE : tracked
+    CONSTRUCTION_EQUIPMENT ||--o{ MAINTENANCE : tracked
 
     HOST {
         int Host_ID PK
         string Host_Name
-        string Host_Type "Individual/Enterprise"
-        string Email UNIQUE
+        string Host_Type
+        string Email UK
         decimal Rating
-        boolean Verified_Status
+        int Verified_Status
     }
     BUYER {
         int Buyer_ID PK
         string Name
-        enum Buyer_Type "Farm/Construction"
-        string Email UNIQUE
+        string Buyer_Type
+        string Email UK
     }
     BOOKING {
         int Booking_ID PK
         int Buyer_ID FK
         int Host_ID FK
         int Equipment_ID
-        enum Equipment_Type "Farm/Construction"
-        enum Usage_Type "Hourly/Daily"
+        string Equipment_Type
+        string Usage_Type
         decimal Total_Amount
-        enum Status "Pending/Confirmed/Completed/Cancelled"
+        string Status
     }
     PAYMENT {
         int Payment_ID PK
         int Booking_ID FK
         decimal Amount
-        enum Mode "Cash/Card/UPI/Net Banking/Wallet"
-        enum Status "Pending/Completed/Failed/Refunded"
+        string Mode
+        string Status
     }
 ```
 
@@ -301,4 +301,5 @@ dbms/
 ```
 
 ---
+
 
